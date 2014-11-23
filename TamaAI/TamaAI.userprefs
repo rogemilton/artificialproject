@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../Documents/KitchenGraph/Assets/testLines.cs">
+    <Files>
+      <File FileName="../Documents/KitchenGraph/Assets/testLines.cs" Line="1" Column="1" />
+      <File FileName="../Documents/KitchenGraph/Assets/makeObjects.cs" Line="59" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
