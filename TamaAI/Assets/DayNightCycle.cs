@@ -58,6 +58,7 @@ public class DayNightCycle : MonoBehaviour {
 	// Update is called once per frame <-very important
 	void Update () {
 		CycleDay ();
+		ToggleDayNight ();
 	}
 
 	/// <summary>
@@ -71,7 +72,7 @@ public class DayNightCycle : MonoBehaviour {
 		//for day/night can be done here
 		//evaluate the landHour variable and if the hourly time is between:
 		//16:00 and 6:00 it is night time
-		if(landHour >= 19 || landHour <= 6)
+		if(landHour >= 19 || landHour <= 6 || landHour == 14)
 		{
 			//make it night
 			nightTime = true;
@@ -136,5 +137,14 @@ public class DayNightCycle : MonoBehaviour {
 	public void Weather()
 	{
 
+	}
+
+
+	void ToggleDayNight()
+	{
+		if(Input.GetKeyUp(KeyCode.Q))
+		{
+			nightTime = !nightTime;
+		}
 	}
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\DayNightCycle.cs" />
      <Compile Include="Assets\Horse.cs" />
+     <Compile Include="Assets\HorseAnimation.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Horse\SoftAlpha.shader" />

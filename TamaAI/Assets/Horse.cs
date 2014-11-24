@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class Horse : MonoBehaviour {
 	//Gameobject with horse when it's awake
 	public GameObject horseAwake;
@@ -15,12 +15,40 @@ public class Horse : MonoBehaviour {
 
 	private GameObject frontHorse;
 
-	public Animation walking;
+
+	public GameObject idle;
+	public GameObject horseWalking;
+
+	public bool walking;
+
+	public string[] starter = {"hi", "how", "ok","whoa","I","You"};
+	public string[] finisher = {"haha", "no", "yes", "you","really"};
+	public string[] punct = {"!", ".", "?","!!!!","!?",".",".","."};
+
+	public List<string> starters = new List<string>();
+	public List<string> finishers = new List<string>();
+	public List<string> puncts = new List<string>();
+
 
 	// Use this for initialization
 	void Start () {
 
 		frontHorse = GameObject.Find ("tama");
+		walking = false;
+
+		foreach(string s in starter)
+		{
+			starters.Add(s);
+		}
+		foreach(string s in finisher)
+		{
+			finishers.Add(s);
+		}
+		foreach(string s in punct)
+		{
+			puncts.Add(s);
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -29,6 +57,20 @@ public class Horse : MonoBehaviour {
 		Sleeping ();
 		UserLight ();
 
+
+		if(walking)
+		{
+			idle.SetActive(false);
+			horseWalking.SetActive(true);
+		}
+		else
+		{
+			horseWalking.SetActive(false);
+			idle.SetActive(true);
+		}
+
+		//Debug.Log (starters.Count + " " + finishers.Count);
+	
 	}
 
 	/// <summary>
@@ -66,9 +108,7 @@ public class Horse : MonoBehaviour {
 	public string process = "";
 	public string intro = "nehhh nehhh I'm Tama Chan :D";
 
-	public string[] starters = {"hi", "how", "ok","whoa","I","You"};
-	public string[] finishers = {"haha", "oh", "no", "yes", "you"};
-	public string[] puncts = {"!", ".", "?","!!!!"};
+
 
 	void OnGUI()
 	{
@@ -97,7 +137,7 @@ public class Horse : MonoBehaviour {
 		{
 			if(distanceHorse <= 1.3f)
 			{
-				GUI.Box(new Rect(90,140,200,50), "hi there female tama chan!");
+				GUI.Box(new Rect(90,140,200,50), "fooood");
 			}
 			if(distanceHorse < 6.0f && distanceHorse > 1.3f)
 			{
@@ -108,13 +148,17 @@ public class Horse : MonoBehaviour {
 
 	string ProcessString(string response)
 	{
-		int startRandom = Random.Range (0, starters.Length - 1);
-		int finishRandom = Random.Range (0, finishers.Length - 1);
-		int punRandom = Random.Range (0, puncts.Length - 1);
+		int startRandom = Random.Range (0, starters.Count - 1);
+		int finishRandom = Random.Range (0, finishers.Count - 1);
+		int punRandom = Random.Range (0, puncts.Count - 1);
 
 		string[] userWords = response.Split (' ');
 		int userRandom = Random.Range (0, userWords.Length - 1);
-		string newRes = starters [startRandom] + " " + userWords [userRandom] + " " + finishers [finishRandom] + puncts [punRandom];
+		string newRes = starters [startRandom] + " " + userWords [userRandom] + " " + finishers [finishRandom];
+		starters.Add (userWords [0]);
+
+		finishers.Add (userWords [userWords.Length - 1]);
+
 		return newRes;
 	}
 
@@ -125,5 +169,6 @@ public class Horse : MonoBehaviour {
 			ptLight.SetActive(!ptLight.activeSelf);
 		}
 	}
+
 
 }
