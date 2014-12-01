@@ -17,9 +17,10 @@ public class Horse : MonoBehaviour {
 
 
 	public GameObject idle;
+
 	public GameObject horseWalking;
 
-	public bool walking;
+	private bool walking;
 
 	public string[] starter = {"hi", "how", "ok","whoa","I","You"};
 	public string[] finisher = {"haha", "no", "yes", "you","really"};
@@ -29,6 +30,10 @@ public class Horse : MonoBehaviour {
 	public List<string> finishers = new List<string>();
 	public List<string> puncts = new List<string>();
 
+
+	public GameObject bounds;
+
+	private int direction = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +53,8 @@ public class Horse : MonoBehaviour {
 		{
 			puncts.Add(s);
 		}
+		walking = true;
+
 
 	}
 	
@@ -56,8 +63,8 @@ public class Horse : MonoBehaviour {
 		frameCount++;
 		Sleeping ();
 		UserLight ();
-
-
+		CheckWalking ();
+	
 		if(walking)
 		{
 			idle.SetActive(false);
@@ -119,6 +126,7 @@ public class Horse : MonoBehaviour {
 			//Debug.Log (distanceHorse);
 			if(distanceHorse < 6.0f && distanceHorse > 1.3f)
 			{
+				walking = false;
 				GUI.Box(new Rect(90,140,200,50), intro);
 
 				process = GUI.TextField(new Rect(90,90,200,50), process, 512);
@@ -128,10 +136,15 @@ public class Horse : MonoBehaviour {
 					intro = ProcessString(process);
 				}
 			}
+			else 
+			{
+				walking = true;
+			}
 			if(distanceHorse <= 1.3f)
 			{
 				GUI.Box(new Rect(90,140,200,50), "I don't like humans :(");
 			}
+
 		}
 		else
 		{
@@ -170,5 +183,34 @@ public class Horse : MonoBehaviour {
 		}
 	}
 
+	void CheckWalking()
+	{
+		if(walking)
+		{
 
+			transform.Translate(0.1f * Vector3.forward);
+			GameObject[] allTrees = GameObject.FindGameObjectsWithTag("Sample");
+			foreach(GameObject obj in allTrees)
+			{
+				if(DistanceMag(obj, gameObject) < 4.0f)
+				{
+					//Debug.Log("this works!_!_!!_!_");
+					transform.Rotate(0,0.3f,0);
+
+				}
+			}
+
+
+
+		}
+	}
+	
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.name == "SampleCube")
+		{
+			Debug.Log("this works tooo!");
+		}
+
+	}
 }
