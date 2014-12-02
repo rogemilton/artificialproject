@@ -72,7 +72,7 @@ public class DayNightCycle : MonoBehaviour {
 		//for day/night can be done here
 		//evaluate the landHour variable and if the hourly time is between:
 		//16:00 and 6:00 it is night time
-		if(landHour >= 19 || landHour <= 6 || landHour == 14)
+		if(landHour >= 23 || landHour <= 6 || landHour == 14)
 		{
 			//make it night
 			nightTime = true;

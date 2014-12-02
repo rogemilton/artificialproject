@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Horse.cs">
     <Files>
-      <File FileName="Assets/Horse.cs" Line="198" Column="28" />
-      <File FileName="Assets/cubescript.cs" Line="26" Column="3" />
+      <File FileName="Assets/Horse.cs" Line="28" Column="87" />
+      <File FileName="Assets/DayNightCycle.cs" Line="75" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
